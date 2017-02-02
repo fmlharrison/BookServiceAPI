@@ -17,6 +17,7 @@ namespace BookServiceAPI.Models
     
         public BookServiceAPIContext() : base("name=BookServiceAPIContext")
         {
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
         public System.Data.Entity.DbSet<BookServiceAPI.Models.Author> Authors { get; set; }
