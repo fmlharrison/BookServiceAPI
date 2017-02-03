@@ -11,6 +11,9 @@
         Title: ko.observable(),
         Year: ko.observable()
     }
+    self.newAuthor = {
+        Name: ko.observable()
+    }
 
     var booksUri = "/api/books/";
     var authorsUri = "/api/authors";
@@ -57,6 +60,18 @@
 
         ajaxHelper(booksUri, "POST", book).done(function(item) {
             self.books.push(item);
+            window.location.reload();
+        });
+    }
+
+    self.addAuthor = function(formElement) {
+        var author = {
+            Name: self.newAuthor.Name()
+        };
+
+        ajaxHelper(authorsUri, "POST", author).done(function(data) {
+            self.books.push(authors);
+            window.location.reload();
         });
     }
 
